@@ -7,35 +7,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AirField {
-	private List<Jet> fleet;
-	//populate fleet from the file
-	
+	private List<Jet> fleet = new ArrayList<>();
+	// populate fleet from the file
+
 	public List<Jet> readFromFile(String fileName) {
-		List<Jet> jets = new ArrayList<>();
-		//read in the Various Jet Types from the file
-		try ( BufferedReader bufIn = new BufferedReader(new FileReader(fileName)) ) {
-			  String aWholeJet;
-			  while ((aWholeJet = bufIn.readLine()) != null) {
-				  //as you read in a Jet, create a Jet!
-				 String[] jetDetails = aWholeJet.split(",");
-				  //create the appropriate jet based on all the details.
-				 /*if the jetDetails[0] happens to be DCV then create a fighter Jet
-				  * if the jetDetails[0] happens to be DCV then create a dilithiumPowered Jet
-				  * if the jetDetails[0] happens to be DCV then create a cargo Jet
-				  */
-				  
-				  
-				  //and add that specific jet type to your jets list
-				  
-			  }
+		// read in the Various Jet Types from the file
+		try (BufferedReader bufIn = new BufferedReader(new FileReader(fileName))) {
+			String aWholeJet;
+			while ((aWholeJet = bufIn.readLine()) != null) {
+				String[] jetDetails = aWholeJet.split(",");
+				String model = jetDetails[0];
+				String name = jetDetails[1];
+				double speed = Double.parseDouble(jetDetails[2]);
+				int range = Integer.parseInt(jetDetails[3]);
+				long price = Long.parseLong(jetDetails[4]);
+				Jet jet = null;
+				if (model.equals("PassengerJet")) {
+					jet = new PassengerJet(model, name, speed, range, price);
+				}
+				if (model.equals("CargoJet")) {
+					jet = new CargoJet(model, name, speed, range, price);
+				}
+				if (model.equals("FighterJet")) {
+					jet = new FighterJet(model, name, speed, range, price);
+				}
+
+				fleet.add(jet);
 			}
-			catch (IOException e) {
-			  System.err.println(e);
-			}
-		
-		return jets;
+		} catch (IOException e) {
+			System.err.println(e);
+		}
+		System.out.println(fleet);
+		return fleet;
 	}
-	
-	
-	
+
 }
