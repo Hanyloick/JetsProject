@@ -129,5 +129,10 @@ public class AirField {
 		return "Error while adding jet.";
 	}
 	
+	public Jet removeJet(int jetToRemove) {
+		Jet jetRemoved;
+		jetRemoved = fleet.remove(jetToRemove - 1);
+		return jetRemoved;
+	}
 }
 

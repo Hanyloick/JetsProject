@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.AirField;
+import com.skilldistillery.jets.entities.Jet;
+import com.skilldistillery.jets.entities.PassengerJet;
 
 public class JetsApplication {
 	public static void main(String[] args) {
@@ -71,7 +73,8 @@ public class JetsApplication {
 			addNewJet(scanner, airField);
 			break;
 		case 8:
-			
+			removeJet(scanner, airField);
+			break;
 		case 9:
 			System.out.println("Thank You!");
 			return false;
@@ -112,7 +115,7 @@ public class JetsApplication {
 		}
 		return input;
 	}
-	
+
 	private void addNewJet(Scanner scanner, AirField airField) {
 		String model = "";
 		String name = "";
@@ -128,7 +131,7 @@ public class JetsApplication {
 			System.out.println("2.-----Cargo------|");
 			System.out.println("3.----Fighter-----|");
 			System.out.println("|-----------------|");
-				choice = getIntput(scanner);
+			choice = getIntput(scanner);
 		} while (choice != 1 && choice != 2 && choice != 3);
 
 		switch (choice) {
@@ -168,7 +171,21 @@ public class JetsApplication {
 		System.out.println(airField.addNewJet(choice, model, name, speed, range, price));
 
 	}
-
 	
+	private void removeJet(Scanner scanner, AirField airField) {
+		int jetToRemove;
 
+		airField.listFleet();
+
+		System.out.println("Please select the number of the jet you would like to remove >> ");
+
+		jetToRemove = getIntput(scanner);
+
+		Jet removedJet = new PassengerJet();
+
+		removedJet = airField.removeJet(jetToRemove);
+
+		System.out.println("Removed this jet:\n" + removedJet + "\n");
+	
+	}
 }
