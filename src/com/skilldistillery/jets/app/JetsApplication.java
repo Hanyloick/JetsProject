@@ -28,17 +28,17 @@ public class JetsApplication {
 	}
 
 	public void displayMenu() {
-		System.out.println("|------------------------------|");
-		System.out.println("1.------List The Fleet.--------|");
-		System.out.println("2.-------Fly All Jets.---------|");
-		System.out.println("3.-----View Fastest Jet.-------|");
-		System.out.println("4.-View Jet With Longest Range.|");
-		System.out.println("5.-----Load All Cargo Jets.----|");
-		System.out.println("6.--------Dogfight!------------|");
-		System.out.println("7.---Add A Jet To The Fleet.---|");
-		System.out.println("8.-Remove A Jet From The Fleet.|");
-		System.out.println("9.----------Quit---------------|");
-		System.out.println("|------------------------------|");
+		System.out.println("|-------------------------------|");
+		System.out.println("|1.------List The Fleet.--------|");
+		System.out.println("|2.-------Fly All Jets.---------|");
+		System.out.println("|3.-----View Fastest Jet.-------|");
+		System.out.println("|4.-View Jet With Longest Range.|");
+		System.out.println("|5.-----Load All Cargo Jets.----|");
+		System.out.println("|6.--------Dogfight!------------|");
+		System.out.println("|7.---Add A Jet To The Fleet.---|");
+		System.out.println("|8.-Remove A Jet From The Fleet.|");
+		System.out.println("|9.----------Quit---------------|");
+		System.out.println("|-------------------------------|");
 	}
 
 	public boolean userChoice(Scanner scanner, AirField airField) {
@@ -82,7 +82,7 @@ public class JetsApplication {
 		return true;
 	}
 
-	public int getIntput(Scanner scanner) {
+	private int getIntput(Scanner scanner) {
 
 		int input = 0;
 		try {
@@ -94,7 +94,7 @@ public class JetsApplication {
 		return input;
 	}
 
-	public double getDouble(Scanner scanner) {
+	private double getDouble(Scanner scanner) {
 		double input = 0;
 		try {
 			input = scanner.nextDouble();
@@ -105,7 +105,7 @@ public class JetsApplication {
 		return input;
 	}
 
-	public double getLongPut(Scanner scanner) {
+	private long getaLong(Scanner scanner) {
 		long input = 0;
 		try {
 			input = scanner.nextLong();
@@ -126,11 +126,11 @@ public class JetsApplication {
 
 		do {
 			System.out.println("What type of jet would you like to add? Select the number of your choice below.");
-			System.out.println("|-----------------|");
-			System.out.println("1.----Passenger---|");
-			System.out.println("2.-----Cargo------|");
-			System.out.println("3.----Fighter-----|");
-			System.out.println("|-----------------|");
+			System.out.println("|------------------|");
+			System.out.println("|1.----Passenger---|");
+			System.out.println("|2.-----Cargo------|");
+			System.out.println("|3.----Fighter-----|");
+			System.out.println("|------------------|");
 			choice = getIntput(scanner);
 		} while (choice != 1 && choice != 2 && choice != 3);
 
@@ -155,7 +155,7 @@ public class JetsApplication {
 				System.out.println("Enter the jet's range >> ");
 				range = getIntput(scanner);
 				System.out.println("Enter the jet's price >> ");
-				price = scanner.nextLong();
+				price = getaLong(scanner);
 
 			} catch (Exception e) {
 				System.err.println("\nInvalid input. Please try again.\n");
@@ -171,21 +171,15 @@ public class JetsApplication {
 		System.out.println(airField.addNewJet(choice, model, name, speed, range, price));
 
 	}
-	
+
 	private void removeJet(Scanner scanner, AirField airField) {
 		int jetToRemove;
-
 		airField.listFleet();
-
-		System.out.println("Please select the number of the jet you would like to remove >> ");
-
-		jetToRemove = getIntput(scanner);
-
-		Jet removedJet = new PassengerJet();
-
-		removedJet = airField.removeJet(jetToRemove);
-
+		System.out.println("Please select the number of the jet you would like to remove >> ");		
+		jetToRemove = getIntput(scanner);		
+		Jet removedJet = new PassengerJet();		
+		removedJet = airField.removeJet(jetToRemove);		
 		System.out.println("Removed this jet:\n" + removedJet + "\n");
-	
+
 	}
 }

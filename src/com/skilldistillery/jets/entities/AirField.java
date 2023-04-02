@@ -8,10 +8,8 @@ import java.util.List;
 
 public class AirField {
 	private List<Jet> fleet = new ArrayList<>();
-	// populate fleet from the file
 
 	public List<Jet> readFromFile(String fileName) {
-		// read in the Various Jet Types from the file
 		try (BufferedReader bufIn = new BufferedReader(new FileReader(fileName))) {
 			String aWholeJet;
 			while ((aWholeJet = bufIn.readLine()) != null) {
@@ -37,7 +35,6 @@ public class AirField {
 		} catch (IOException e) {
 			System.err.println(e);
 		}
-//		System.out.println(fleet);
 		return fleet;
 	}
 

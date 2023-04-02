@@ -1,5 +1,5 @@
-CargoJet,USS BrainPain,995900,52141012,112356585562
+CargoJet,USS BrainPain,825,6000,17000000
 FighterJet,USS Deletion,1000,600,50000000
 PassengerJet,womboJet,750,5508,5011561
 PassengerJet,bigPlane,320,2800,3651720
-PassengerJet,flying away,250,3000,3265200
+FighterJet,flying away,850,1500,3265200
