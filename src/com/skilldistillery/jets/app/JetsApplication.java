@@ -127,7 +127,7 @@ public class JetsApplication {
 		do {
 			System.out.println("What type of jet would you like to add? Select the number of your choice below.");
 			System.out.println("|------------------|");
-			System.out.println("|1.----Passenger---|");
+			System.out.println("|1.---Passenger----|");
 			System.out.println("|2.-----Cargo------|");
 			System.out.println("|3.----Fighter-----|");
 			System.out.println("|------------------|");

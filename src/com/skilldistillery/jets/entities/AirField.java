@@ -9,6 +9,14 @@ import java.util.List;
 public class AirField {
 	private List<Jet> fleet = new ArrayList<>();
 
+	public List<Jet> getFleet() {
+		return this.fleet;
+	}
+
+	public void setFleet(List<Jet> fleet) {
+		this.fleet = fleet;
+	}
+
 	public List<Jet> readFromFile(String fileName) {
 		try (BufferedReader bufIn = new BufferedReader(new FileReader(fileName))) {
 			String aWholeJet;
@@ -36,14 +44,6 @@ public class AirField {
 			System.err.println(e);
 		}
 		return fleet;
-	}
-
-	public List<Jet> getFleet() {
-		return this.fleet;
-	}
-
-	public void setFleet(List<Jet> fleet) {
-		this.fleet = fleet;
 	}
 
 	public void fly() {
@@ -84,52 +84,49 @@ public class AirField {
 		}
 		System.out.println("Longest Range: " + longestRange);
 	}
-	
+
 	public void loadAllCargo() {
-		for(Jet jet : fleet ){
-			if(jet instanceof CargoCarrier){
+		for (Jet jet : fleet) {
+			if (jet instanceof CargoCarrier) {
 				((CargoCarrier) jet).loadCargo();
 			}
 		}
 	}
-	
+
 	public void dogFight() {
 		boolean initialJet = true;
-		for(Jet jet : fleet){
-			if(jet instanceof FighterJet){
+		for (Jet jet : fleet) {
+			if (jet instanceof FighterJet) {
 				((FighterJet) jet).fight(initialJet);
 				initialJet = false;
 			}
 		}
 
 	}
-	
-	
-	
+
 	public String addNewJet(int choice, String model, String name, double speed, int range, long price) {
-		
+
 		switch (choice) {
 		case 1:
 			Jet jet = new PassengerJet(model, name, speed, range, price);
 			fleet.add(jet);
 			return jet.toString();
 		case 2:
-			 jet = new CargoJet(model, name, speed, range, price);
+			jet = new CargoJet(model, name, speed, range, price);
 			fleet.add(jet);
 			return jet.toString();
 		case 3:
-			 jet = new FighterJet(model, name, speed, range, price);
+			jet = new FighterJet(model, name, speed, range, price);
 			fleet.add(jet);
 			return jet.toString();
 		}
 
 		return "Error while adding jet.";
 	}
-	
+
 	public Jet removeJet(int jetToRemove) {
 		Jet jetRemoved;
 		jetRemoved = fleet.remove(jetToRemove - 1);
 		return jetRemoved;
 	}
 }
-
