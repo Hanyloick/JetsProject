@@ -7,16 +7,18 @@ public class FighterJet extends Jet implements FighterInterface {
 	}
 
 	@Override
-	public void fight() {
+	public void fight(boolean fighting) {
 		System.out.println("so then i was like, Pew Pew Pew!");
-		System.out.println(this.toString());
-		
+		fly();
+
 	}
 
 	@Override
 	void fly() {
-		System.out.println(this.toString());
-		
+		System.out.print(this.getClass().getSimpleName() + ": " + ", Name: " + getName() + "\nSpeed: " + getSpeed()
+				+ ", Range: " + getRange() + ", Flight Time: ");
+		System.out.printf("%.2f", ((getRange() / getSpeed())));System.out.println(" hours.");
+
 	}
 
 }
