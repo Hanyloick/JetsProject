@@ -73,7 +73,12 @@ public class JetsApplication {
 			addNewJet(scanner, airField);
 			break;
 		case 8:
+			try {
 			removeJet(scanner, airField);
+			} catch(IndexOutOfBoundsException e) {
+				System.err.println("invalid option try again");
+				scanner.nextLine();
+			}
 			break;
 		case 9:
 			System.out.println("Thank You!");
